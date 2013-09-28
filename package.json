@@ -1,0 +1,27 @@
+{
+  "name": "node-zoom",
+  "version": "0.0.1",
+  "description": "NODE-ZOOM =========",
+  "main": "./lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha test",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/poying/node-zoom.git"
+  },
+  "keywords": [
+    "zoom"
+  ],
+  "author": "Po-Ying Chen <poying.me@gmail.com>",
+  "license": "MIT",
+  "gypfile": true,
+  "devDependencies": {
+    "chai": "~1.8.0",
+    "mocha": "~1.13.0"
+  }
+}
