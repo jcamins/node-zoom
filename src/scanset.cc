@@ -45,6 +45,14 @@ Handle<Value> ScanSetObject::NewInstance(ZOOM_scanset scanset){
 	return scope.Close(instance);
 }
 
+Handle<Value> ScanSetObject::NewInstance(){
+	HandleScope scope;
+	
+	Local<Object> instance = constructor->NewInstance();
+	
+	return scope.Close(instance);
+}
+
 Handle<Value> ScanSetObject::term(const Arguments& args){
 	HandleScope scope;
 	

@@ -12,11 +12,13 @@ using namespace v8;
 bool connection_failed(ZOOM_connection connection, Handle<Value> exception){
 	int error;
 	const char *errmsg, *addinfo;
+  char msg[80];
 
 	error = ZOOM_connection_error(connection, &errmsg, &addinfo);
 
 	if (error != 0){
-		exception = ThrowException(Exception::Error(String::New(errmsg)));
+    sprintf(msg, "%s (%d) %s", errmsg, error, addinfo);
+		exception = ThrowException(Exception::Error(String::New(msg)));
 		return true;
 	}
 	
@@ -87,7 +89,7 @@ Handle<Value> ConnectionObject::search(const Arguments& args){
 	Handle<Value> exception;
 
 	if(connection_failed(obj->conn, exception)){
-    return ThrowException(exception);
+    return exception;
 	}
 
 	return scope.Close(ResultSetObject::NewInstance(rs));

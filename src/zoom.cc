@@ -29,6 +29,9 @@ void initAll(Handle<Object> target){
 
 	target->Set(String::NewSymbol("connection"), Connection->NewInstance());
 	target->Set(String::NewSymbol("query"), QueryObject::NewInstance());
+  target->Set(String::NewSymbol("scanset"), ScanSetObject::NewInstance());
+  target->Set(String::NewSymbol("resultset"), ResultSetObject::NewInstance());
+	target->Set(String::NewSymbol("record"), RecordObject::NewInstance());
 }
 
 NODE_MODULE(zoom, initAll);

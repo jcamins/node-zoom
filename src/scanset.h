@@ -10,6 +10,7 @@ class ScanSetObject : public node::ObjectWrap {
 	public:
 		static void Init();
 		static v8::Handle<v8::Value> NewInstance(ZOOM_scanset scanset);
+		static v8::Handle<v8::Value> NewInstance();
 		static v8::Handle<v8::Value> size(const v8::Arguments& args);
 		static v8::Handle<v8::Value> term(const v8::Arguments& args);
 		static v8::Handle<v8::Value> displayTerm(const v8::Arguments& args);

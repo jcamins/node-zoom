@@ -60,6 +60,14 @@ Handle<Value> ResultSetObject::NewInstance(ZOOM_resultset result){
 	return scope.Close(instance);
 }
 
+Handle<Value> ResultSetObject::NewInstance(){
+	HandleScope scope;
+	
+	Local<Object> instance = constructor->NewInstance();
+	
+	return scope.Close(instance);
+}
+
 Handle<Value> ResultSetObject::destroy(const Arguments& args){
 	HandleScope scope;
 	ResultSetObject * rs = new ResultSetObject();
@@ -75,7 +83,13 @@ Handle<Value> ResultSetObject::option(const Arguments& args){
 	
 	switch(args.Length()){
 		case 1:
-			return scope.Close(String::New(ZOOM_resultset_option_get(obj->rs, *key)));
+      const char *value;
+      value = ZOOM_resultset_option_get(obj->rs, *key);
+      if (value) {
+        return scope.Close(String::New(value));
+      } else {
+        return scope.Close(Null());
+      }
 			break;
 		case 2:
 			String::Utf8Value val2(args[1]);

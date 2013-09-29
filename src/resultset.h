@@ -10,6 +10,7 @@ class ResultSetObject : public node::ObjectWrap {
 	public:
 		static void Init();
 		static v8::Handle<v8::Value> NewInstance(ZOOM_resultset result);
+		static v8::Handle<v8::Value> NewInstance();
 		static v8::Handle<v8::Value> destroy(const v8::Arguments& args);
 		static v8::Handle<v8::Value> option(const v8::Arguments& args);
 		static v8::Handle<v8::Value> record(const v8::Arguments& args);
