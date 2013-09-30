@@ -15,7 +15,9 @@ class RecordObject : public node::ObjectWrap {
 		static v8::Handle<v8::Value> render(const v8::Arguments& args);
 		static v8::Handle<v8::Value> rawdata(const v8::Arguments& args);
 		static v8::Handle<v8::Value> xml(const v8::Arguments& args);
+		static v8::Handle<v8::Value> txml(const v8::Arguments& args);
 		static v8::Handle<v8::Value> recsyn(const v8::Arguments& args);
+		static v8::Handle<v8::Value> schema(const v8::Arguments& args);
 		ZOOM_record r;
 
 	private:

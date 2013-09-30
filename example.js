@@ -11,6 +11,6 @@ connection.connect(function (err) {
   var query = new zoom.Query('@attr 1=4 台灣');
   connection.search(query, function (err, resultset) {
     var first = resultset.record(1);
-    console.log(first.xml());
+    console.log(first.txml());
   });
 });

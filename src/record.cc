@@ -29,8 +29,14 @@ void RecordObject::Init(){
 	tpl->PrototypeTemplate()->Set(String::NewSymbol("xml"), 
 			FunctionTemplate::New(xml)->GetFunction());
 	
+	tpl->PrototypeTemplate()->Set(String::NewSymbol("txml"), 
+			FunctionTemplate::New(txml)->GetFunction());
+	
 	tpl->PrototypeTemplate()->Set(String::NewSymbol("recsyn"), 
 			FunctionTemplate::New(recsyn)->GetFunction());
+	
+	tpl->PrototypeTemplate()->Set(String::NewSymbol("schema"), 
+			FunctionTemplate::New(schema)->GetFunction());
 	
 	constructor = Persistent<Function>::New(tpl->GetFunction());
 }
@@ -95,4 +101,20 @@ Handle<Value> RecordObject::recsyn(const Arguments& args){
 	RecordObject * obj = node::ObjectWrap::Unwrap<RecordObject>(args.This());
   const char *syn = ZOOM_record_get(obj->r, "syntax", 0);
 	return scope.Close(String::New(syn));
+}
+
+Handle<Value> RecordObject::schema(const Arguments& args){
+	HandleScope scope;
+  int len;
+	RecordObject * obj = node::ObjectWrap::Unwrap<RecordObject>(args.This());
+  const char *schema = ZOOM_record_get(obj->r, "schema", &len);
+	return scope.Close(String::New(std::string(schema, len).c_str()));
+}
+
+Handle<Value> RecordObject::txml(const Arguments& args){
+	HandleScope scope;
+  int len;
+	RecordObject * obj = node::ObjectWrap::Unwrap<RecordObject>(args.This());
+  const char *txml = ZOOM_record_get(obj->r, "txml", &len);
+	return scope.Close(String::New(std::string(txml, len).c_str()));
 }
