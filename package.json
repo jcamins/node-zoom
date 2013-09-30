@@ -1,6 +1,6 @@
 {
   "name": "node-zoom",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "z39.50",
   "main": "./lib/index.js",
   "directories": {
