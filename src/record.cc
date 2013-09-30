@@ -50,8 +50,12 @@ Handle<Value> RecordObject::NewInstance(ResultSetObject * res, int index){
 	RecordObject * obj = node::ObjectWrap::Unwrap<RecordObject>(instance);
 	
   obj->r = ZOOM_resultset_record(res->rs, index);
-	
-	return scope.Close(instance);
+
+  if (obj->r) {
+    return scope.Close(instance);
+  }
+
+  return scope.Close(Null());
 }
 
 Handle<Value> RecordObject::NewInstance(){

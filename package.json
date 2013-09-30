@@ -1,7 +1,7 @@
 {
   "name": "node-zoom",
-  "version": "0.0.1",
-  "description": "NODE-ZOOM =========",
+  "version": "0.0.2",
+  "description": "z39.50",
   "main": "./lib/index.js",
   "directories": {
     "test": "test"
@@ -15,7 +15,8 @@
     "url": "git://github.com/poying/node-zoom.git"
   },
   "keywords": [
-    "zoom"
+    "zoom",
+    "z39.50"
   ],
   "author": "Po-Ying Chen <poying.me@gmail.com>",
   "license": "MIT",
